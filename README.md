@@ -1,15 +1,12 @@
-acurite_to_graph
+go_rtl_433_ambient
 ================
 
-Graph your temperature & humidity sensors (AcuRite 06002RM, AcuRite 06044M ...).
-
-It parses the JSON output from `rtl_443` command and sent it to InfluxDB or expose it to Prometheus.
-
-You can pass a flag to add a `name` label matching a specific id like:
+Send your RTL_433 captured data to InfluxDB.
+This captures the JSON output of the rtl_433 and sends it to InfluxDB.
+Pass the IDs with an associated name.
+```
+go_rtl_r433_ambient --namedFields 150=LivingRoom,120=Kitchen
 
 ```
-acurite_to_graph -nameFields 8831=bedroom,15466=livingroom -debug
-2016/10/27 17:45:38 {Acurite tower sensor 15466 A 17.5 52 OK livingroom}
-2016/10/27 17:45:41 {Acurite tower sensor 8831 B 17.1 54 OK bedroom}
-```
-So it will be passed to Prometheus & InfluxDB
+
+This can easily be modified to to use the other devices that the rtl_433 can listen to. 
